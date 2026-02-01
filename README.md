@@ -11,3 +11,9 @@ You can just run this: "ansible all -m ping" then it will take all the needed in
 Commands: 
 
 - run a command as sude user: ansible all -m apt -a update_cache=true --become --ask-become-pass
+
+# install or uninstall apache using playbook
+  - ansible-playbook --become --ask-become-pass install_apache.yml or remove_apache.yml
+
+NB: if you have made changes in your git repository before you push from local run this: git pull --rebase origin main
+
