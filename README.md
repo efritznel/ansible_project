@@ -1,5 +1,14 @@
 # ansible_project
-This is a new project
+
+- Create 4 servers, 3 with Ubuntu OS and 1 with CentOS
+- 
+    - Ansible is installed on the controller server
+      
+    - Openssh is installed on all the servers
+      
+    - then we have copied the public key of the controller node to all the managed nodes: ssh-copy-id -i ~/.ssh/key.pub <target_IP>
+    
+    - We created a file called "inventory" in Controller Node and added all the IPs of the managed Nodes
 
 # cfg file
 adding the cfg file helps to make default configuration for ansible
@@ -16,5 +25,5 @@ Commands:
   - ansible-playbook --become --ask-become-pass install_apache.yml or remove_apache.yml
 
 NB: if you have made changes in your git repository before you push from local run this: git pull --rebase origin main
-111
+
 
