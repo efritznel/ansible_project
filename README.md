@@ -26,4 +26,7 @@ Commands:
 
 NB: if you have made changes in your git repository before you push from local run this: git pull --rebase origin main
 
+# Tags
+    - To see list tags available: ansible-playbook --list-tags <playbook.yml>
+
 
