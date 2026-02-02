@@ -30,8 +30,18 @@ NB: if you have made changes in your git repository before you push from local r
     - To see list tags available: ansible-playbook --list-tags <playbook.yml>
 
 # permission
+
     - after adding simone in sudoers file we can ssh to any of the servers without password
+    
     ssh -i  ~/.ssh/privatekey simone@IPaddress
+
+NB. we can add the user simone the ansible config file "ansible.cfg"
+
+    - remote_user = simone
+    
+    - Now instead of running the playbook this way: ansible-playbook --become --ask-become-pass         file.yml
+    
+    -We ccan just run: ansible-playbook file.yml
 
 
 
