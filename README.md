@@ -29,7 +29,9 @@ NB: if you have made changes in your git repository before you push from local r
 # Tags
     - To see list tags available: ansible-playbook --list-tags <playbook.yml>
 
-# managing files
+# permission
+    - after adding simone in sudoers file we can ssh to any of the servers without password
+    ssh -i  ~/.ssh/privatekey simone@IPaddress
 
 
 
