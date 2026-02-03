@@ -45,8 +45,10 @@ NB. we can add the user simone the ansible config file "ansible.cfg"
 
 # Variables & Handlers
 
-Create a folder called "host_vars
+Create a folder called "host_vars"
+
 create a yaml for each server using IP address or DNS name
+
 Then change the configuration in the main.yml for the specific servers group
 
 
