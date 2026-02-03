@@ -41,7 +41,15 @@ NB. we can add the user simone the ansible config file "ansible.cfg"
     
     - Now instead of running the playbook this way: ansible-playbook --become --ask-become-pass         file.yml
     
-    -We ccan just run: ansible-playbook file.yml
+    - We ccan just run: ansible-playbook file.yml
+
+# Variables & Handlers
+
+Create a folder called "host_vars
+create a yaml for each server using IP address or DNS name
+Then change the configuration in the main.yml for the specific servers group
+
+
 
 
 
