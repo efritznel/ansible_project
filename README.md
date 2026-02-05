@@ -11,7 +11,8 @@
 
 1 Ansible Controller Node (Ubuntu)
 
-Initial Setup
+# Initial Setup
+
 On the Controller Node
 
     - Install Ansible
@@ -26,8 +27,47 @@ On Managed Nodes
 
 ssh-copy-id -i ~/.ssh/key.pub <TARGET_IP>
 
+# Inventory File
 
+Create an inventory file on the controller and add all managed node IPs:
+```yaml
+[web_servers]
+10.0.0.112
+10.0.0.3
 
+[db_servers]
+10.0.0.38
+
+[file_servers]
+10.0.0.170
+
+[windows]
+10.0.0.211
+
+[windows:vars]
+ansible_user=ithomelabadmin
+ansible_password=p@$$w0rd
+ansible_port=5985
+ansible_connection=winrm
+ansible_winrm_transport=basic
+ansible_winrm_server_cert_validation=ignore
+```
+# ansible.cfg Configuration
+
+The ansible.cfg file defines default settings such as:
+
+    - Inventory location
+
+    - Private SSH key
+
+    - Default remote user
+
+This allows you to run commands without specifying parameters each time.
+
+Instead of:
+```yaml
+ansible all --key-file ~/.ssh/keyname -i inventory -m ping
+```
 *********************************************************************************************************************
 # ansible_project
 
