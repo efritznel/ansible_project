@@ -111,6 +111,51 @@ Now you can run playbooks without --become prompts:
 ```yaml
 ansible-playbook file.yml
 ```
+# Variables & Handlers
+
+Host Variables
+
+Create a directory:
+```yaml
+host_vars/
+```
+
+Inside it, create YAML files per server:
+```yaml
+host_vars/10.0.0.112.yml
+host_vars/10.0.0.3.yml
+```
+
+Define server-specific values such as:
+```yaml
+apache_port: 8080
+env: staging
+```
+Use them in playbooks via {{ variable_name }}.
+
+# Managing Windows Servers with Ansible
+
+Ansible communicates with Windows using WinRM.
+
+Enable WinRM on Windows (PowerShell as Admin)
+```yaml
+Enable-PSRemoting -Force
+winrm quickconfig
+winrm set winrm/config/service/Auth '@{Basic="true"}'
+winrm set winrm/config/service '@{AllowUnencrypted="true"}'
+Set-Item WSMan:\localhost\service\AllowUnencrypted -Value $true
+
+New-NetFirewallRule -Name "WinRM_HTTP" -Protocol TCP -LocalPort 5985 -Action Allow
+New-NetFirewallRule -Name "WinRM_HTTPS" -Protocol TCP -LocalPort 5986 -Action Allow
+
+Restart-Service WinRM
+```
+
+# Testing Windows Connectivity
+```yaml
+ansible -i inventory windows -m win_ping
+ansible -i inventory windows -m win_shell -a "hostname"
+```
 *********************************************************************************************************************
 # ansible_project
 
