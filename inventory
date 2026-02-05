@@ -8,3 +8,14 @@
 [file_servers]
 10.0.0.170
 
+[windows]
+10.0.0.211
+
+[windows:vars]
+ansible_user=ithomelabadmin
+ansible_password=p@$$w0rd
+ansible_port=5985
+ansible_connection=winrm
+ansible_winrm_transport=basic
+ansible_winrm_server_cert_validation=ignore
+
