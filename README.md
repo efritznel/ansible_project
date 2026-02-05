@@ -29,7 +29,7 @@ NB: if you have made changes in your git repository before you push from local r
 # Tags
     - To see list tags available: ansible-playbook --list-tags <playbook.yml>
 
-# permission
+# Permission
 
     - after adding simone in sudoers file we can ssh to any of the servers without password
     
@@ -63,6 +63,12 @@ Set-Item -Path WSMan:\localhost\service\AllowUnencrypted -Value $true
 New-NetFirewallRule -Name "WinRM Port" -DisplayName "Allow WinRM" -Protocol TCP -LocalPort 5985 -Action Allow
 New-NetFirewallRule -Name "WinRM Port" -DisplayName "Allow WinRM" -Protocol TCP -LocalPort 5986 -Action Allow
 Restart-Service WinRM
+```
+
+# Test the connection
+```yaml
+ansible -i inventory windows -m win_ping
+ansible -i inventory windows -m win_shell -a "hostname"
 ```
 
 
