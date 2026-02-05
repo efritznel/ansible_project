@@ -51,6 +51,21 @@ create a yaml for each server using IP address or DNS name
 
 Then change the configuration in the main.yml for the specific servers group
 
+# Manage Windows machine with Ansible
+We need to set WinRM on the windows machine 
+# Set up WinRM with the following command
+```yaml
+Enable-PSRemoting -Force
+winrm quickconfig
+winrm set winrm/config/service/Auth '@{Basic="true"}'
+winrm set winrm/config/service '@{AllowUnencrypted="true"}'
+Set-Item -Path WSMan:\localhost\service\AllowUnencrypted -Value $true
+New-NetFirewallRule -Name "WinRM Port" -DisplayName "Allow WinRM" -Protocol TCP -LocalPort 5985 -Action Allow
+New-NetFirewallRule -Name "WinRM Port" -DisplayName "Allow WinRM" -Protocol TCP -LocalPort 5986 -Action Allow
+Restart-Service WinRM
+```
+
+
 
 
 
