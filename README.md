@@ -1,3 +1,34 @@
+
+# Lab Architecture
+
+5 servers total
+
+    2 × Ubuntu
+
+    1 × CentOS
+
+    1  × Windwos
+
+1 Ansible Controller Node (Ubuntu)
+
+Initial Setup
+On the Controller Node
+
+    - Install Ansible
+
+    - Generate SSH key pair
+
+On Managed Nodes
+
+    - Install OpenSSH
+
+    - Copy controller public key:
+
+ssh-copy-id -i ~/.ssh/key.pub <TARGET_IP>
+
+
+
+*********************************************************************************************************************
 # ansible_project
 
 - Create 4 servers, 3 with Ubuntu OS and 1 with CentOS
