@@ -68,6 +68,49 @@ Instead of:
 ```yaml
 ansible all --key-file ~/.ssh/keyname -i inventory -m ping
 ```
+
+Simply run:
+```yaml
+ansible all -m ping
+```
+# Running Ad-Hoc Commands
+
+Update package cache with sudo:
+```yaml
+ansible all -m apt -a "update_cache=true" --become --ask-become-pass
+```
+Remove Apache
+```yaml
+ansible-playbook --become --ask-become-pass remove_apache.yml
+```
+
+# Using Tags
+
+List available tags:
+```yaml
+ansible-playbook --list-tags playbook.yml
+```
+Run a specific tag:
+```yaml
+ansible-playbook playbook.yml --tags install
+```
+
+# Privilege & Remote User Configuration
+
+After adding user simone to the sudoers file:
+
+SSH without password:
+```yaml
+ssh -i ~/.ssh/privatekey simone@<SERVER_IP>
+```
+Set default user in ansible.cfg:
+```yaml
+remote_user = simone
+```
+Now you can run playbooks without --become prompts:
+```yaml
+ansible-playbook file.yml
+```
 *********************************************************************************************************************
 # ansible_project
 
